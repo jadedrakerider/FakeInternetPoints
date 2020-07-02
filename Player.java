@@ -1,41 +1,25 @@
-public class Player{
+public class Player extends Entity {
 
-  int maxHP;
-  int currentHP;
-  int attackRating;
-
-  Player()
-  {
-    this.maxHP = 100;
-    this.currentHP = this.maxHP;
-    this.attackRating = 2;
+  Player(){
+    super();
   }
 
-  Player(int maxHP, int attackRating)
-  {
-    this.maxHP = maxHP;
-    this.currentHP = this.maxHP;
-    this.attackRating = attackRating;
+  Player(int maxHP, int attackRating){
+    super(maxHP, attackRating);
   }
 
-  public int getCurrentHP()
+  public void fights(Enemy enemy)
   {
-    return this.currentHP;
+    int currentHP = enemy.getCurrentHP() - this.getAttackRating();
+    enemy.setCurrentHP(currentHP);
+    
+    System.out.println("Enemy HP: " + enemy.getCurrentHP());
   }
 
-  public void setCurrentHP(int currentHP)
+  public void maxHeal()
   {
-    this.currentHP = currentHP;
-  }
-
-  public int getAttackRating()
-  {
-    return this.attackRating;
-  }
-
-  public void setAttackRating(int attackRating)
-  {
-    this.attackRating = attackRating;
+    this.setCurrentHP(this.maxHP);
+    System.out.println("Player healed to max health: "+this.getCurrentHP());
   }
 
 }
