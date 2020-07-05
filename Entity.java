@@ -5,14 +5,14 @@ public class Entity
   int currentHP;
   int attackRating;
 
-  Entity()
+  public Entity()
   {
-    this.maxHP = 100;
+    this.maxHP = 1000;
     this.currentHP = this.maxHP;
     this.attackRating = 2;
   }
 
-  Entity(int maxHP, int attackRating)
+  public Entity(int maxHP, int attackRating)
   {
     this.maxHP = maxHP;
     this.currentHP = this.maxHP;
@@ -40,9 +40,13 @@ public class Entity
     {
       this.currentHP = 0;
     } 
+    else if (currentHP > this.getMaxHP())
+    {
+      this.currentHP = this.getMaxHP();
+    }
     else
     {
-    this.currentHP = currentHP;
+      this.currentHP = currentHP;
     }
   }
 
@@ -58,7 +62,7 @@ public class Entity
 
   public boolean isAlive()
   {
-    if (currentHP > 0)
+    if (this.currentHP > 0)
     {
       return true;
     }
