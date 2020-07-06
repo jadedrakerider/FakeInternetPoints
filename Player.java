@@ -54,10 +54,12 @@ public class Player extends Entity {
     switch (this.inventory.get(index).getItemType()){
       case POTION:
         this.drink((Potion)this.inventory.get(index));
+        this.inventory.remove(index);
         break;
       default:
         System.out.println("useItemInInventory(index) default value");
         break;
+    
     } 
   }
 
@@ -70,6 +72,12 @@ public class Player extends Entity {
 
   public void fights(Enemy enemy)
   {
+
+    if(this.getCurrentHP() < this.getMaxHP() - 40)
+    {
+      this.useItemInInventory(0);
+    }
+
     int currentHP = enemy.getCurrentHP() - this.getAttackRating();
     enemy.setCurrentHP(currentHP);
 
@@ -78,6 +86,10 @@ public class Player extends Entity {
       int accumulatedXP = this.getAccumulatedXP() + enemy.getXP();
       this.setAccumulatedXP(accumulatedXP);
       this.levelUp();
+      if(enemy.getItem() != null)
+      {
+        this.inventory.add(enemy.getItem());
+      }
     }
     
   }

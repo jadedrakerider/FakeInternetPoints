@@ -40,13 +40,7 @@ class Main {
     assertEquals(12,player.getAccumulatedXP());
   
     System.out.println("Player is alive = " + player.isAlive());
-    
-
-    // while(player.isAlive())
-    // {
-    //   battle = new Battle(player,enemy,r.nextInt(9)+1);
-    //   battle.commence();
-    // }
+  
 
     System.out.println("last battle was battle: " + battle.counter);
     System.out.println("The player died at level: " + player.getLevel());
@@ -60,6 +54,12 @@ class Main {
     player.useItemInInventory(0);
     System.out.println("Player HP after potion: " + player.getCurrentHP());
 
+    while(player.isAlive())
+    {
+      battle = new Battle(player,enemy,r.nextInt(9)+1);
+      battle.commence();
+    }
+  
 
   }
 

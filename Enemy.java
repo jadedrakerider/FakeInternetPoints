@@ -2,7 +2,7 @@ public class Enemy extends Entity
 {
 
   int XP;
-  // ItemSpawner itemSpawner = new ItemSpawner();
+  ItemSpawner itemSpawner = new ItemSpawner();
 
   Enemy()
   {
@@ -14,6 +14,11 @@ public class Enemy extends Entity
   {
     super(maxHP,attackRating);
     this.setXP(1);
+  }
+
+  public Item getItem()
+  {
+    return this.itemSpawner.getItem();
   }
 
   public int getXP(){
