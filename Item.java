@@ -7,6 +7,7 @@ public class Item
 
   ItemType type;
 
+  //constructors
   public ItemType getItemType()
   {
     return this.type;
@@ -28,12 +29,14 @@ class Potion extends Item
     this(10);
   }
 
+  //Constructors
   public Potion(int HPRecovery)
   {
     this.HPRecovery = HPRecovery;
     this.type = ItemType.POTION;
   }
 
+  //Getters and setters
   public int getHPRecovery(){
     return this.HPRecovery;
   }
@@ -42,5 +45,7 @@ class Potion extends Item
   {
     this.HPRecovery = HPRecovery;
   }
+
+  // functional methods
 
 }

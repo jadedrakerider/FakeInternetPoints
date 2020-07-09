@@ -8,7 +8,7 @@ class Battle
   Player player;
   static int counter = 0;
   
-  
+  //Constructors
   Battle(Player player, Enemy enemy)
   {
     this(player,enemy,1);
@@ -35,24 +35,34 @@ class Battle
     counter++;
   }
 
+  // Getters and Setters
+
+  // Functional Methods
+  /*  implements the battle action.
+      loops check to see if the player is still alive.
+      Initial for loop iterates through the LinkedList of enemies for the 
+        player to fight. 
+      Then two entities fight(). 
+  */ 
   void commence()
   {
     for(int i = 0 ; i < enemies.size() && player.isAlive() ; i++)
     {
       System.out.println("Battling enemy number "+ (i+1));
-      // this.pauseBattle();
+      pauseBattle();
       Enemy currentEnemy = enemies.get(i);
       
       while(currentEnemy.isAlive() && player.isAlive())
       {
         currentEnemy.fights(player);
         player.fights(currentEnemy);
-
+        System.out.println("Player's HP: " + player.getCurrentHP());
       }
     }
   }
 
-  void pauseBattle(){
+  //pauseBattle() pauses the battle for 1 second
+  void pauseBattle(){ 
     try 
     {
       Thread.sleep(1000);

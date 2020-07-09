@@ -1,13 +1,23 @@
+import java.util.Random;
+
 public class ItemSpawner 
 {
-  
+  Random r = new Random();
   Item item;
 
+  // Constructors
   public ItemSpawner()
   {
-    this.setItem(new Potion());
+    int result = r.nextInt(4);
+    if(result == 0)
+    {
+      this.setItem(new Potion());
+      System.out.println("New Potion Spawned");
+    }
+
   }
 
+  // Getters or Setters
   public Item getItem()
   {
     return this.item;
@@ -17,5 +27,7 @@ public class ItemSpawner
   {
     this.item = item;
   }
+
+  // Functional Methods
 
 }
